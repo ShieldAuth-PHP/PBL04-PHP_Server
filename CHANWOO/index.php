@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 로그인 성공
         $row = $result->fetch_assoc();
         $_SESSION['username'] = $row['username'];
-        echo "로그인 성공! 환영합니다, " . $_SESSION['username'];
+        # echo "로그인 성공! 환영합니다, " . $_SESSION['username'];
     } else {
         // 로그인 실패
         echo "잘못된 이메일 또는 비밀번호입니다.";
@@ -37,19 +37,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인 페이지</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>3조 - 보안의 역사 / PBL4 - 간단한 로그인 기능이 포함된 PHP 페이지 작성</title>
+        <link rel="stylesheet" href="index.css">
+        <!--멀티타이핑 JS 파일 연동-->
+    </head>
 <body>
-    <h2>로그인</h2>
-    <form method="POST" action="">
-        <label for="email">이메일:</label>
-        <input type="email" name="email" id="email" required><br>
-        <label for="password">비밀번호:</label>
-        <input type="password" name="password" id="password" required><br>
-        <button type="submit">로그인</button>
-    </form>
+    <div class = "mainbox">
+        <p class="title">3조 - 보안의 역사 / PBL4 - 간단한 로그인 기능이 포함된 PHP 페이지 작성</p>
+            <div class="container">
+                <span class="text sec-text"></span>
+            </div>
+            <br>
+                <script type="text/javascript" src="typing.js"></script>
+            <form method="POST" action="">
+                <label for="email">이메일:</label>
+                <input type="email" name="email" id="email" required><br> <br>
+                <label for="password">비밀번호:</label>
+                <input type="password" name="password" id="password" required><br> <br>
+                <button type="submit" class="loginbtn">로그인</button>
+            </form>
+
+            <hr class="linestyle">
+            <?php
+                echo "로그인 성공! 환영합니다, " . $_SESSION['username'];
+            ?>
+    </div>
 </body>
 </html>
