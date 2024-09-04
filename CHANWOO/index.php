@@ -4,7 +4,7 @@ session_start();
 // MySQL 연결 정보
 $servername = "localhost";
 $username = "root"; // 개인이 설정한 MySQL 이름 입력
-$password = ""; // 개인이 설정한 MySQL 비밀번호 입력
+$password = "Lthoo369!@"; // 개인이 설정한 MySQL 비밀번호 입력
 $dbname = "scuhistory";
 
 // MySQL 연결
