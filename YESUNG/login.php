@@ -4,7 +4,7 @@ session_start();
 // MySQL 연결 정보
 $servername = "localhost";
 $username = "root";
-$password = "Yourpasswd1!";
+$password = "YourPasswordHere1!";
 $dbname = "scuhistory";
 
 // MySQL 연결
@@ -14,10 +14,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("MySQL 연결 실패: " . $conn->connect_error);
 }
-
+    // POST 요청을 처리하는 부분
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_username = $_POST['username'];
     $input_password = $_POST['password'];
+
+    // 입력받은 ID와 PW 출력
+    echo "입력된 ID: " . $input_username . "<br>";
+    echo "입력된 PW: " . $input_password . "<br>";
 
     // SQL 쿼리
     $sql = "SELECT * FROM users WHERE username = '$input_username' AND password = '$input_password'";
