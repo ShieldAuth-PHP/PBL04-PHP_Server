@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['login_attempts'] = 0;  // 로그인 성공 시 실패 횟수 초기화
+        # echo "로그인 성공! 환영합니다. " . $_SESSION['username'];
         header("Location: dashboard.php");
         exit();
     } else {
@@ -41,68 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Welcome - Please Login</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f5f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .login-container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        h2 {
-            text-align: center;
-            color: #172b4d;
-            margin-bottom: 24px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #172b4d;
-        }
-
-        input[type="email"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 16px;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        .error {
-            color: red;
-            text-align: center;
-            margin-bottom: 16px;
-        }
+     
     </style>
 </head>
 <body>
@@ -111,13 +54,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Login</h2>
 
     <?php
+    // 로그인 실패 시 오류 메시지 출력
     if (isset($error_message)) {
         echo "<p class='error'>$error_message</p>";
     }
     ?>
 
     <!-- 로그인 폼 -->
-    <form action="login.php" method="POST">
+    <form action="index.php" method="POST">
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
 
@@ -127,9 +71,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" value="Login">
     </form>
 
-    <!-- 회원가입 링크 -->
-    <div class="signup-link">
-        <p>Don't have an account? <a href="signup.php">Sign up</a></p>
+    <!-- 회원가입 메시지 -->
+    <div class="signup-message">
+        <p>계정이 없으신가요? <a href="signup.php">회원가입</a>을 진행해 주세요!</p>
     </div>
 </div>
 
